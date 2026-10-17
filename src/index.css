@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+/* ========================================
+   Jenkinsfile Intelligence Platform
+   Design System & Global Styles
+   ======================================== */
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  
+  /* Neon accent palette */
+  --color-neon-cyan: #22d3ee;
+  --color-neon-emerald: #34d399;
+  --color-neon-amber: #fbbf24;
+  --color-neon-rose: #fb7185;
+  --color-neon-purple: #c084fc;
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3), 0 0 30px rgba(34, 211, 238, 0.1);
+}
+.glow-emerald {
+  box-shadow: 0 0 15px rgba(52, 211, 153, 0.3), 0 0 30px rgba(52, 211, 153, 0.1);
+}
+.glow-amber {
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.3), 0 0 30px rgba(251, 191, 36, 0.1);
+}
+.glow-rose {
+  box-shadow: 0 0 15px rgba(251, 113, 133, 0.3), 0 0 30px rgba(251, 113, 133, 0.1);
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #22d3ee, #34d399, #c084fc);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* Smooth page transitions */
+.tab-content {
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Parse button pulse animation */
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(34, 211, 238, 0.6), 0 0 50px rgba(34, 211, 238, 0.2); }
+}
+
+/* Inspector drawer slide animation */
+.drawer-enter {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Stage node hover animation */
+.stage-node-hover {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.stage-node-hover:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
+
+/* Table row hover */
+.table-row-hover:hover {
+  background-color: rgba(30, 41, 59, 0.8);
+}
+
+/* Custom selection */
+::selection {
+  background-color: rgba(34, 211, 238, 0.3);
+  color: #ffffff;
+}
+
+/* Dot grid background */
+.dot-grid-bg {
+  background-image: radial-gradient(circle, #1e293b 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Body base */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ── React Flow Dark Theme Overrides ── */
+.react-flow__controls {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(51, 65, 85, 0.6) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  overflow: hidden;
+}
+.react-flow__controls button {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4) !important;
+  fill: #94a3b8 !important;
+  color: #94a3b8 !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+.react-flow__controls button:hover {
+  background: rgba(34, 211, 238, 0.1) !important;
+  fill: #22d3ee !important;
+}
+.react-flow__controls button:last-child {
+  border-bottom: none !important;
+}
+.react-flow__minimap {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(51, 65, 85, 0.6) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+.react-flow__edge path {
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+.react-flow__background {
+  opacity: 0.4;
+}
+
